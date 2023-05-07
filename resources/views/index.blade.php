@@ -142,7 +142,7 @@
     {{-- Why choose us --}}
 
 
-    <div class="my-choose-us">
+    <div class="my-choose-us py-5">
 
         <div class="container">
 
