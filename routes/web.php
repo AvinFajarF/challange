@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function() {
     return view('dashboard.index');
 });
+
+
+Route::get('/dashboard/rent-cars', function() {
+    return view('dashboard.components.tabel-cars');
+})->name('components.tabel-cars');
