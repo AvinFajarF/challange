@@ -20,9 +20,15 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function() {
     return view('dashboard.index');
-});
+})->name("dashboard");
 
 
-Route::get('/dashboard/rent-cars', function() {
+Route::get('/dashboard/data-cars', function() {
     return view('dashboard.components.tabel-cars');
 })->name('components.tabel-cars');
+
+
+
+Route::get('/dashboard/data-user', function() {
+    return view('dashboard.components.tabel-users');
+})->name('components.tabel-users');

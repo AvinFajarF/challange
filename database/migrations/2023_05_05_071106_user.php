@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string("nama");
             $table->string("alamat");
             $table->integer("no_telepon");
-            $table->integer("no_ktp");
             $table->enum('role', ['admin', 'guest']);
             $table->timestamps();
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::drop('user');
     }
 };
