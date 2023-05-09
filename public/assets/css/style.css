@@ -1,0 +1,71 @@
+.hero{
+    background: linear-gradient(283.63deg, #F1F3FC 0%, #F7F7FB 100%);
+}
+
+.hero-paragraf{
+    color: #929395;
+}
+
+
+
+
+.brand{
+    margin-top: 5rem;
+}
+
+
+/* how-it-work */
+
+.how-it-work{
+    margin-top: 8rem;
+}
+
+.title-work{
+    color: #ACAEB4;
+}
+
+.paragraf-work{
+    color: #1D1E21;
+}
+
+.arrow{
+    margin-top: 5rem;
+}
+
+
+
+.dompet{
+    display: inline-block;
+}
+
+
+.my-choose-us{
+    margin-top: 10rem;
+    background-color: #FAFAFA;
+
+}
+
+
+/* .content-image{
+   width: 30rem;
+} */
+
+
+
+.text-description{
+    font-size: .8rem;
+    width: 8rem;
+}
+
+
+
+/* footer */
+
+
+footer{
+    background-color: #010101;
+}
+
+.garis{
+    color: #505865;
+}
