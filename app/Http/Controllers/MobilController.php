@@ -32,13 +32,11 @@ class MobilController extends Controller
     {
         $request->validate(
             [
-                'plat_nomer' => 'integer',
                 'bensin' => 'integer',
                 'jumlah' => 'integer',
                 'tipe_mobil' => 'string',
             ],
             [
-                'plat_nomer.integer' => 'hanya boleh di isi angka',
                 'bensin.integer' => 'hanya boleh di isi angka',
                 'jumlah.integer' => 'hanya boleh di isi angka',
                 'tipe_mobil.string' => 'tipe mobil hanya boleh di isi string',
@@ -47,7 +45,6 @@ class MobilController extends Controller
 
         $data =
         [
-            'plat_nomer' => $request->plat_nomer,
             'tipe_mobil' => $request->tipe_mobil,
             'bensin' => $request->bensin,
             'jumlah' => $request->jumlah,
@@ -74,7 +71,8 @@ class MobilController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $findMobil = Mobil::find($id);
+        return view("dashboard.components.mobil.FormEditMobil", ['findMobil' => $findMobil]);
     }
 
     /**
@@ -82,7 +80,6 @@ class MobilController extends Controller
      */
     public function edit(string $id)
     {
-        //
     }
 
     /**
@@ -90,7 +87,30 @@ class MobilController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            [
+                'bensin' => 'integer',
+                'jumlah' => 'integer',
+                'tipe_mobil' =>'string',
+            ],
+            [
+                'bensin.integer' => 'hanya boleh di isi angka',
+                'jumlah.integer' => 'hanya boleh di isi angka',
+                'tipe_mobil.string' => 'tipe mobil hanya boleh di isi string',
+            ]
+        );
+
+        $data =
+        [
+            'tipe_mobil' => $request->tipe_mobil,
+            'bensin' => $request->bensin,
+            'jumlah' => $request->jumlah,
+        ];
+
+        $findMobilEdit = Mobil::find($id);
+        $findMobilEdit->update($data);
+        return redirect('/dashboard/data-cars');
+
     }
 
     /**
@@ -98,6 +118,8 @@ class MobilController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleteMobil = Mobil::find($id);
+        $deleteMobil->delete();
+        return redirect('/dashboard/data-cars');
     }
 }

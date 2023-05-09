@@ -33,13 +33,6 @@
                         <form class="space-y-6" action="{!! route('cars.add') !!}" method="POST">
                             @csrf
                             <div>
-                                <label for="plat_nomer"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">plat nomer</label>
-                                <input type="text" name="plat_nomer" id="plat_nomer"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    placeholder="plat nomer" required>
-                            </div>
-                            <div>
                                 <label for="tipe_mobil"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe mobil</label>
                                 <input type="text" name="tipe_mobil" id="tipe_mobil"
@@ -96,42 +89,36 @@
                         Jumlah
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        status
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         Action
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($mobil as $user)
+                @foreach($mobil as $item)
                     <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->bensin }}</td>
-                        <td>{{ $user->jumlah }}</td>
-                        <td>{{ $user->status }}</td>
-                        @endforeach
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple MacBook Pro 17"
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        1
                     </th>
                     <td class="px-6 py-4">
-                        Silver
+                        {{ $item->tipe_mobil }}
                     </td>
                     <td class="px-6 py-4">
-                        Laptop
+                        {{ $item->bensin }}
                     </td>
                     <td class="px-6 py-4">
-                        $2999
+                        {{ $item->jumlah }}
                     </td>
-                    <td class="px-6 py-4">
-                        $2999
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <td class="px-6 py-4 flex items-center gap-4">
+                        <a href="{{ route('cars.show', $item->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <form action="{{ route('cars.delete', $item->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline inline-block">Delete</button>
+                        </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

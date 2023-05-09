@@ -14,15 +14,10 @@ class Mobil extends Model
 
     protected $fillable = [
             'tipe_mobil',
-            'plat_nomer',
             'bensin',
             'jumlah',
             'image',
-            'status'
         ];
 
-        protected $attributes = [
-            'status' => 'tersedia'
-        ];
 
 }
